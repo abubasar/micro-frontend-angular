@@ -1,19 +1,40 @@
-# Micro Frontend Angular
+# Micro-Frontend with Angular
 
-Here i implement micro-frontend with mono repo workspace approach.
+This repository demonstrates implementing a Micro-Frontend architecture using Angular with a Monorepo workspace.
 
-## Step by step command to implement micro-frontend
+## Steps to Implement Micro-Frontend
 
- Run `npx @angular/cli@18 new mono-repo-workspace --create-application=false` for creating angular blank application in angular 18.
+1. **Create Workspace**:  
+   ```bash
+   npx @angular/cli@18 new mono-repo-workspace --create-application=false
+   ```
 
- Run `ng g application host-app --routing --style=scss` for creating host application.
- Run `ng g application mfe-app --routing --style=scss` for creating remote application.
+2. **Generate Applications**:  
+   - Host Application:  
+     ```bash
+     ng g application host-app --routing --style=scss
+     ```
+   - Remote Application:  
+     ```bash
+     ng g application mfe-app --routing --style=scss
+     ```
 
- Run `ng serve host-app -o` to run host application.
- Run `ng serve mfe-app -o` to run remote application.
+3. **Add Module Federation**:  
+   - Host (Port: 4200):  
+     ```bash
+     ng add @angular-architects/module-federation --project host-app --port 4200 --type host
+     ```
+   - Remote (Port: 4300):  
+     ```bash
+     ng add @angular-architects/module-federation --project mfe-app --port 4300 --type remote
+     ```
 
- Run `ng add @angular-architects/module-federation --project host-app --port 4200 --type host` to add module federation in host application assigning default port 4200.
- Run `ng add @angular-architects/module-federation --project mfe-app --port 4300 --type remote` to add module federation in remote application assigning default port 4300.
-
- Run `ng serve host-app -o` to run host application again.
- Run `ng serve mfe-app -o` to run remote application again.
+4. **Serve Applications**:  
+   - Host Application:  
+     ```bash
+     ng serve host-app -o
+     ```
+   - Remote Application:  
+     ```bash
+     ng serve mfe-app -o
+     

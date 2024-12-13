@@ -1,6 +1,6 @@
 # Micro-Frontend with Angular
 
-This repository demonstrates implementing a Micro-Frontend architecture using Angular with a Monorepo workspace.
+This repository demonstrates implementing a Micro-Frontend architecture using Angular 18 with a Monorepo workspace.
 
 ## Steps to Implement Micro-Frontend
 

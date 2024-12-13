@@ -1,27 +1,19 @@
-# MonoRepoMfe
+# Micro Frontend Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
+Here i implement micro-frontend with mono repo workspace approach.
 
-## Development server
+## Step by step command to implement micro-frontend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Run `npx @angular/cli@18 new mono-repo-workspace --create-application=false` for creating angular blank application in angular 18.
 
-## Code scaffolding
+### Run `ng g application host-app --routing --style=scss` for creating host application.
+### Run `ng g application mfe-app --routing --style=scss` for creating remote application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Run `ng serve host-app -o` to run host application.
+### Run `ng serve mfe-app -o` to run remote application.
 
-## Build
+### Run `ng add @angular-architects/module-federation --project host-app --port 4200 --type host` to add module federation in host application assigning default port 4200.
+### Run `ng add @angular-architects/module-federation --project mfe-app --port 4300 --type remote` to add module federation in remote application assigning default port 4300.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Run `ng serve host-app -o` to run host application again.
+### Run `ng serve mfe-app -o` to run remote application again.
